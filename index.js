@@ -11,10 +11,10 @@ module.exports = (res) => {
         res.write(content);
         res.write("<title>TestBed</title></head><body><h1>Testing</h1><div id='map'>t1</div>");
         const client = new Client();
-        console.log('test');
+        res.write('<div>test</div>');
         client.on('qr', (qr) => {
             // Generate and display QR code for user to scan
-            console.log('holi');
+            res.write('<div>test1</div>');
             qrcode.toDataURL(qr.toString(), (err, url)=>{
                 res.write("<img src='" + url + "' >");
             });
