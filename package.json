@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/AlessandroLF/gohighwhats/issues"
   },
-  "homepage": "https://github.com/AlessandroLF/gohighwhats#readme"
+  "homepage": "https://github.com/AlessandroLF/gohighwhats#readme",
+  "dependencies": {
+    "whatsapp-web.js": "^1.19.4"
+  }
 }
