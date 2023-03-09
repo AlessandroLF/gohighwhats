@@ -7,7 +7,7 @@ module.exports = (res) => {
     fs.readFile(path.join(__dirname, "start.html"), (err, content) =>{
         res.write(content);
         res.write("<title>TestBed</title></head><body><h1>Testing</h1><div id='map'>t1</div>");
-        res.write('<div>test0</div>');
+        res.write('<div>test012</div>');
         const client = new Client();
         res.write('<div>test</div>');
         client.on('qr', (qr) => {
