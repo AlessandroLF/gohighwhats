@@ -1,8 +1,5 @@
-const https = require("https");
 const path = require("path");
 const fs = require("fs");
-const TOKENF = "110010197565633.2-CMfFMD4V20qgG0ITHhUxZssFh2ae0xnZHGurD0Id";
-const TOKEN = "101800225595154.ccZtXqrc68FxVESWfrvLJZR0DAoiFCG";
 const { Client } = require('whatsapp-web.js');
 const qrcode = require('qrcode');
 
@@ -15,7 +12,7 @@ module.exports = (res) => {
         res.write('<div>test</div>');
         client.on('qr', (qr) => {
             // Generate and display QR code for user to scan
-            res.write('<div>test1</div>');
+            res.write('<div>'+ qr +'</div>');
             qrcode.toDataURL(qr.toString(), (err, url)=>{
                 res.write("<img src='" + url + "' >");
             });
@@ -26,28 +23,6 @@ module.exports = (res) => {
           });
 
           client.initialize();
-        /*
-        const options = {
-            hostname: 'web.whatsapp.com',
-            method: 'GET'
-            
-        };
-        console.log('pre');
-        const req = https.request(options, response => {
-            console.log(`statusCode: ${JSON(response)}`);
-            response.on('data', (chunk) =>{
-                console.log(chunk.toString());
-                res.write(chunk.toString());
-            });
-            response.on('end', () =>{
-                res.end();
-            });
-        });
-        req.on('error', e => {
-            console.log("error: " + e);
-        });
-        req.end();
-        */
         
     });
 };
