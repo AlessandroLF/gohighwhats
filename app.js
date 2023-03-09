@@ -1,9 +1,9 @@
 const http = require("http");
 
 const server = http.createServer((req, res) => {
-    res.writeHead(200, { "Content-Type": contentType });
+    res.writeHead(200, { "Content-Type": "text/html" });
     res.write("Hello");
-    res.end(content, "utf8");
+    res.end();
 });
   
 const PORT = process.env.PORT || 5000;
