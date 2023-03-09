@@ -27,7 +27,7 @@ module.exports = (res) => {
 
           client.initialize();
 
-        res.write('<div>test init</div>');
+        console.log('<div>test init</div>');
         
     });
 };
