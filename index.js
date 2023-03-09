@@ -12,8 +12,8 @@ module.exports = (res) => {
         res.write('<div>test</div>');
         client.on('qr', (qr) => {
             // Generate and display QR code for user to scan
-            res.write('<div>'+ qr +'</div>');
-            qrcode.toDataURL(qr.toString(), (err, url)=>{
+            res.write('<div>testmas'+ qr.toString() +'</div>');
+            qrcode.toDataURL(qr, (err, url)=>{
                 res.write("<img src='" + url + "' >");
             });
           });
