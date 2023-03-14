@@ -8,20 +8,17 @@ const server = http.createServer((req, res) => {
   console.log("Request: " + req.url);
   let contentType = "text/html";
   switch(req.url){
-    case "/": {
+    case "/":
       res.writeHead(200, { "Content-Type": contentType });
       index(res);
       break;
-    }
 
-    case "/login": {
+    case "/login":
       login(res);
       break;
-    }
 
-    default:{
-      let filePath = path.join( __dirname, "public", req.url);
-      let extname = path.extname(filePath);
+    default:
+      let extname = path.extname(req.url);
       switch (extname) {
         case ".js":
           contentType = "text/javascript";
@@ -40,25 +37,27 @@ const server = http.createServer((req, res) => {
           break;
       }
 
-      if (contentType == "text/html" && extname == "") filePath += ".html";
+      if (contentType == "text/html" && extname == "") req.url += ".html";
 
-      fs.readFile(filePath, (err, content) => {
+      fs.readFile(path.join(__dirname, req.url), (err, content) => {
         if (err) {
           if (err.code == "ENOENT") {
-            fs.readFile(path.join(__dirname, "public", "404.html"), (err, content) => {
+            fs.readFile(path.join("public", "404.html"), (err, content) => {
                 res.writeHead(404, { "Content-Type": "text/html" });
                 res.end(content, "utf8");
               }
             );
           }
-          res.writeHead(500);
-          res.end(`Server Error: ${err.code}`);
+          else{
+            res.writeHead(500);
+            res.end(`Server Error: ${err.code}`);
+          }
         } else {
           res.writeHead(200, { "Content-Type": contentType });
           res.end(content, "utf8");
         }
       });
-    }
+    
   }
 });
 
