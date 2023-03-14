@@ -2,8 +2,8 @@ const { Client } = require('whatsapp-web.js');
 const qrcode = require('qrcode');
 
 module.exports = (res) => {
-    res.writeHead(200, { "Content-Type": "application/json" });
     res.setHeader('Access-Control-Allow-Origin', '*');
+    res.writeHead(200, { "Content-Type": "application/json" });
     const arr = [];
     const client = new Client();
     client.on('qr', (qr, err) => {
