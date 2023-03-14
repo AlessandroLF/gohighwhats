@@ -12,6 +12,7 @@ module.exports = (res) => {
         }
         else{
             qrcode.toDataURL(qr, (err, url)=>{
+                console.log(url);
                 arr.push({'image':url});
                 res.write(JSON.stringify(arr));
             });
