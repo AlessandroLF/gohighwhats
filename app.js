@@ -8,9 +8,12 @@ const server = http.createServer((req, res) => {
   console.log("Request: " + req.url);
   let contentType = "text/html";
   switch(req.url){
+
     case "/":
       res.writeHead(200, { "Content-Type": contentType });
-      index(res);
+      fs.readFile(path.join("public", "build", "index.html"), (err, content) => {
+        res.end(content);
+      });
       break;
 
     case "/login":
